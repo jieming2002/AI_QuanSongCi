@@ -5,8 +5,8 @@ import os
 
 from flags import parse_args
 
-#if __name__ == '__main__':
-if __name__ != '__main__':
+if __name__ == '__main__':
+#if __name__ != '__main__':
     FLAGS, unparsed = parse_args()
     print('current working dir [{0}]'.format(os.getcwd()))
     w_d = os.path.dirname(os.path.abspath(__file__))
