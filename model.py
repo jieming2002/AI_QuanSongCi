@@ -33,7 +33,7 @@ class Model():
         self.learning_rate = learning_rate
 
     def build(self, embedding_file=None):
-        """ embedding_file 文件路径 """
+        r""" embedding_file 文件路径 """
         tf.reset_default_graph()
         # global step
         self.global_step = tf.Variable(0, trainable=False, name='self.global_step', dtype=tf.int64)

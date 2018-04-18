@@ -9,7 +9,7 @@ import numpy as np
 
 def read_data(filename):
     print('filename =', filename)
-    """ 把文本文件读进来，拆分为单个字符 """
+    r""" 把文本文件读进来，拆分为单个字符 """
     with open(filename, encoding="utf-8") as f:
         data = f.read()
     data = list(data)
@@ -17,7 +17,7 @@ def read_data(filename):
 
 
 def index_data(sentences, dictionary):
-    """ 使用字典 dictionary 把句子转换为索引 """
+    r""" 使用字典 dictionary 把句子转换为索引 """
     shape = sentences.shape
     sentences = sentences.reshape([-1])
     index = np.zeros_like(sentences, dtype=np.int32)
@@ -34,11 +34,11 @@ def get_train_data(vocabulary, batch_size, num_steps):
     ##################
     # Your Code here
     ##################
-    """ 生成每个 batch 的训练数据 
+    r""" 生成每个 batch 的训练数据 
     vocabulary 输入数据的原文，例如全宋词。是一个字符列表，每个元素是单个字符。
     return 一个元组（data，label） 元素是单词列表
      """
-    print('vocabulary =', vocabulary[:10])
+    #print('vocabulary =', vocabulary[:10])
     #raw_x = np.array(vocabulary, dtype=np.str)
     raw_x = vocabulary
     # 真值是，输入字符的下个字符的索引，也就是说，目的是根据输入字符预测下个字符。
