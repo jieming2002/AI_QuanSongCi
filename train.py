@@ -43,8 +43,6 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     sess.run(tf.local_variables_initializer())
     logging.debug('Initialized')
-    # 先把单词转换为索引，下面训练时，就不用每次都转换了 
-    vocabulary_ix = utils.index_data(vocabulary, dictionary)
 
     try:
         checkpoint_path = tf.train.latest_checkpoint(FLAGS.output_dir)
@@ -58,7 +56,7 @@ with tf.Session() as sess:
         logging.debug('epoch [{0}]....'.format(x))
         state = sess.run(model.state_tensor)
         
-        for dl in utils.get_train_data(vocabulary_ix, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps):
+        for dl in utils.get_train_data(vocabulary, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps):
             ##################
             # Your Code here
             ##################

@@ -35,7 +35,7 @@ def get_train_data(vocabulary, batch_size, num_steps):
     # Your Code here
     ##################
     """ 生成每个 batch 的训练数据 
-    vocabulary 输入数据的原文，例如全宋词。是一个字符列表，每个元素是单个字符。【已根据字典，转换为索引】
+    vocabulary 输入数据的原文，例如全宋词。是一个字符列表，每个元素是单个字符。
     return 一个元组（data，label） 元素是单词列表
      """
     print('vocabulary =', vocabulary[:10])
@@ -44,14 +44,14 @@ def get_train_data(vocabulary, batch_size, num_steps):
     # 真值是，输入字符的下个字符的索引，也就是说，目的是根据输入字符预测下个字符。
     raw_y = vocabulary[1:]
     #为什么尾部要加一个，因为真值比输入少一个，最后一个字符是个句号，没有下一个了。
-    raw_y.append(0) 
+    raw_y.append('UNK') 
     data_size = len(raw_x)
     print('data_size =', data_size)
     
     # 根据 batch_size 拆分为若干段 
     data_partition_size = data_size // batch_size
-    data_x = np.zeros([batch_size, data_partition_size], dtype=np.int32)
-    data_y = np.zeros([batch_size, data_partition_size], dtype=np.int32)
+    data_x = np.zeros([batch_size, data_partition_size], dtype=np.str)
+    data_y = np.zeros([batch_size, data_partition_size], dtype=np.str)
     
     for i in range(batch_size):
         data_x[i] = raw_x[data_partition_size * i:data_partition_size * (i + 1)]
